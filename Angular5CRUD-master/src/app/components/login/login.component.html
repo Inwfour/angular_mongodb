@@ -1,0 +1,64 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{ title }}
+  </div>
+  <div class="panel-body">
+    <form [formGroup]="angForm" novalidate>
+
+      <div class="form-group">
+        <label class="col-md-4">ID</label>
+        <input type="text" class="form-control" formControlName="id" #id />
+      </div>
+      <div *ngIf="angForm.controls['id'].invalid && (angForm.controls['id'].dirty || angForm.controls['id'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['id'].errors.required">
+          ID is required.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-md-4">Password</label>
+        <input type="text" class="form-control" formControlName="password" #password/>
+      </div>
+      <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['password'].errors.required">
+          Password is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-4">Topic</label>
+          <input type="text" class="form-control" formControlName="topic" #topic />
+        </div>
+        <div *ngIf="angForm.controls['topic'].invalid && (angForm.controls['topic'].dirty || angForm.controls['topic'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['topic'].errors.required">
+            Topic is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4">Story</label>
+            <input type="text" class="form-control" formControlName="story" #story />
+          </div>
+          <div *ngIf="angForm.controls['story'].invalid && (angForm.controls['story'].dirty || angForm.controls['story'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['story'].errors.required">
+              Story is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4">Date</label>
+            <input type="text" class="form-control" formControlName="date" #date />
+          </div>
+          <div *ngIf="angForm.controls['date'].invalid && (angForm.controls['date'].dirty || angForm.controls['date'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['date'].errors.required">
+              Date is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+          <button (click)="addDiary(id.value, password.value, topic.value, story.value, date.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+        </div>
+
+    </form>
+  </div>
+</div>
